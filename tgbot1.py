@@ -6,21 +6,19 @@ from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKe
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 import asyncio
 from threading import Thread
-import os
 import re
 import sys
 import io
 
-# Загружаем переменные окружения из .env файла
-from dotenv import load_dotenv
-load_dotenv()
-
 # Telegram Bot Token
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_BOT_TOKEN = "8484739084:AAEFYcWm4aP96NXYsA_gMgvvrVHc4GSVDt8"
 
-# Supabase configuration
-SUPABASE_URL = os.getenv("SUPABASE_URL", "https://cgfbstfgnvdqwzxpjfjp.supabase.co")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY", "")
+# Supabase credentials
+SUPABASE_URL = "https://cgfbstfgnvdqwzxpjfjp.supabase.co"
+SUPABASE_KEY = "cgfbstfgnvdqwzxpjfjp"
+
+# Supabase configuration (used throughout the bot)
+# Values already defined above
 
 # Функции для работы с напоминаниями в Supabase
 def get_reminders_from_supabase(chat_id):
@@ -173,7 +171,7 @@ if sys.platform == 'win32':
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', newline='\n')
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
-BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+BOT_TOKEN = TELEGRAM_BOT_TOKEN  # Use the token defined at the top
 WAITING_TITLE,WAITING_DATE,WAITING_TIME,WAITING_EDIT_TITLE,WAITING_EDIT_DATE,WAITING_EDIT_TIME = range(6)
 DAYS_OF_WEEK = {'понедельник':0,'вторник':1,'среда':2,'четверг':3,'пятница':4,'суббота':5,'воскресенье':6,'пн':0,'вт':1,'ср':2,'чт':3,'пт':4,'сб':5,'вс':6}
 
